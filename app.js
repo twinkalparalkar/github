@@ -12,3 +12,11 @@ ul.children[2].style.background="green"
 for(let i=0;i<ul.children.length;i++){
 	ul.children[i].style.fontWeight="bold"
 }
+const lc=document.getElementsByClassName("list-group")
+lc[0].children[4].style.color="yellow"
+lc[0].children[4].style.paddingTop = "10px"
+lc[0].children[4].style.paddingBottom = "10px"
+const l5=document.getElementsByTagName("li")
+l5[4].style.background="red"
+l5[4].style.paddingLeft="21px"
+console.log(lc[0].children[0])
