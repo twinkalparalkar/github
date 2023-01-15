@@ -68,6 +68,10 @@
 
 var f=document.getElementById('form')
 var u=document.getElementById('items')
+var f1=document.getElementById('filter')
+
+f1.addEventListener('keyup',filteritem);
+
 f.addEventListener('submit',additem);
 
 u.addEventListener('click',removeitem);
@@ -97,4 +101,21 @@ function removeitem(e){
 		u.removeChild(li)		}
 	}
 }
-console.log(f,u)
+
+function filteritem(e){
+	e.preventDefault
+	var text=e.target.value.toLowerCase();
+	var li=u.getElementsByTagName('li')
+	Array.from(li).forEach(function(item){
+		var iname=item.firstChild.textContent.toLowerCase();
+		if(iname.indexOf(text)!=-1){
+			item.style.diaplay='block';
+			console.log(iname,12)
+		}else{
+			item.style.diaplay='none';
+		}
+		// console.log(iname)
+	})
+	// console.log(text,li)
+}
+// console.log(f,u)
