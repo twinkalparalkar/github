@@ -33,36 +33,68 @@
 // 	// console.log(i)
 // }
 //Task 7
-const p=document.querySelector("#items")
+// const p=document.querySelector("#items")
 
 
-// p.parentNode.style.background="#ccc"
-p.parentElement.style.background="#ccc"
-console.log(p.children,p.lastElementChild,p.firstElementChild)
-p.firstElementChild.style.background="red"
-p.lastElementChild.style.background="red"
-console.log(p.children,p.firstChild,p.lastChild)
+// // p.parentNode.style.background="#ccc"
+// p.parentElement.style.background="#ccc"
+// console.log(p.children,p.lastElementChild,p.firstElementChild)
+// p.firstElementChild.style.background="red"
+// p.lastElementChild.style.background="red"
+// console.log(p.children,p.firstChild,p.lastChild)
 
-console.log(p.nextSibling,p.previousSibling)
-console.log(p.nextElementSibling,p.previousElementSibling)
-p.nextElementSibling.style.background="pink"
-p.previousElementSibling.style.background="pink"
-var newDiv=document.createElement('div')
-newDiv.className='hello'
-newDiv.setAttribute('title','Hello div')
-console.log(newDiv)
-var newDivText=document.createTextNode('HEllo')
-newDiv.appendChild(newDivText)
-var c=document.querySelector('header .container')
-var h=document.querySelector('header h1')
-c.insertBefore(newDiv,h)
+// console.log(p.nextSibling,p.previousSibling)
+// console.log(p.nextElementSibling,p.previousElementSibling)
+// p.nextElementSibling.style.background="pink"
+// p.previousElementSibling.style.background="pink"
+// var newDiv=document.createElement('div')
+// newDiv.className='hello'
+// newDiv.setAttribute('title','Hello div')
 // console.log(newDiv)
-var newDiv1=document.createElement('div')
-newDiv.className='hello'
-var newDivText1=document.createTextNode('HEllo')
-newDiv1.appendChild(newDivText1)
-var c1=document.querySelector('#main')
-var h1=document.querySelector('#items')
-c1.insertBefore(newDiv1,h1)
+// var newDivText=document.createTextNode('HEllo')
+// newDiv.appendChild(newDivText)
+// var c=document.querySelector('header .container')
+// var h=document.querySelector('header h1')
+// c.insertBefore(newDiv,h)
+// // console.log(newDiv)
+// var newDiv1=document.createElement('div')
+// newDiv.className='hello'
+// var newDivText1=document.createTextNode('HEllo')
+// newDiv1.appendChild(newDivText1)
+// var c1=document.querySelector('#main')
+// var h1=document.querySelector('#items')
+// c1.insertBefore(newDiv1,h1)
+//task 8
 
+var f=document.getElementById('form')
+var u=document.getElementById('items')
+f.addEventListener('submit',additem);
 
+u.addEventListener('click',removeitem);
+
+function additem(e){
+	e.preventDefault();
+	var n=document.getElementById('input').value
+	var li=document.createElement("li")
+	li.className="list-group-item"
+	li.appendChild(document.createTextNode(n))
+	u.appendChild(li)
+	var d=document.createElement('button')
+d.className='btn btn-danger btn-sm float-right delete'
+d.appendChild(document.createTextNode('Delete'))
+
+var d1=document.createElement('button')
+d1.className='btn btn-warning btn-sm float-right edit'
+d1.appendChild(document.createTextNode('Edit'))
+li.appendChild(d1)
+li.appendChild(d)
+}
+
+function removeitem(e){
+	if(e.target.classList.contains('delete')){
+		if(confirm('Are you sure?')){
+			var li=e.target.parentElement;
+		u.removeChild(li)		}
+	}
+}
+console.log(f,u)
