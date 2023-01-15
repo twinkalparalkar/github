@@ -16,8 +16,14 @@ function onSubmit1(e){
 		ul.appendChild(l)
 	}
 	console.log(n.value,em.value)
-	localStorage.setItem('name',n.value)
-	localStorage.setItem('email',em.value)
+	// localStorage.setItem('name',n.value)
+	// localStorage.setItem('email',em.value)
+	let m={
+		name:n.value,
+		email:em.value
+	}
+	let m1=JSON.stringify(m)
+	localStorage.setItem('object',m1)
 	n.value=""
 	em.value=""
 	console.log(localStorage.getItem('name'))
