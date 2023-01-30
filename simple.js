@@ -32,6 +32,10 @@ function removeitem(e){
 		localStorage.removeItem(v[1])
 		console.log(v)
 		var l=e.target.parentElement;
+		
+		axios.delete(`https://crudcrud.com/api/e7a689a9022e45bbb9407e0c1dc4e4d0/studentdata/${l.id}`)
+		.then(res=>console.log(res))
+		.catch(err=>console.error(err))
 		ul.removeChild(l)
 		n.value=v[0]
 		em.value=v[1]
