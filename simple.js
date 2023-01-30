@@ -60,11 +60,14 @@ function additem(e){
 		phone:pho.value
 	}
 	let m1=JSON.stringify(m)
-	localStorage.setItem(em.value,m1)
+	axios.post("https://crudcrud.com/api/e7a689a9022e45bbb9407e0c1dc4e4d0/studentdata",m)
+	.then((r)=>console.log(r))
+	.catch((err)=>console.log(err))
+	// localStorage.setItem(em.value,m1)
 	n.value=''
 		em.value=''
 		pho.value=''
 	// console.log(1)
 }
-//1.click on edit..delete from localstorage and ul
-// popup into input box
+
+
