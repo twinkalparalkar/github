@@ -70,4 +70,38 @@ function additem(e){
 	// console.log(1)
 }
 
+window.addEventListener("DOMContentLoaded",()=>{
+	axios.get("https://crudcrud.com/api/e7a689a9022e45bbb9407e0c1dc4e4d0/studentdata")
+	.then((r)=>{
+		for(var i=0;i<r.data.length;i++){
+			// console.log(r.data[i])
+			showall(r.data[i])
+		}
+	})
+	.catch((err)=>console.log(err))
+	// const localStorageObj=localStorage;
+	// const localStoragekeys=Object.keys(localStorageObj)
+
+	// for(var i=0;i<localStoragekeys.length;i++){
+	// 	const key=localStoragekeys[i]
+	// 	const userDetailsString=localStorageObj[key];
+	// 	const userDetailsObj=JSON.parse(userDetailsString)
+	// 	console.log()
+	// }
+})
+
+function showall(o){
+	// console.log(o.name,o.email,o.phone)
+	const li=document.createElement('li')
+	li.appendChild(document.createTextNode(`${o.name} - ${o.email} - ${o.phone} - `))
+	const d=document.createElement('button')
+	d.appendChild(document.createTextNode('Delete'))
+	d.className="delete"
+	li.appendChild(d)
+	const ed=document.createElement('button')
+	ed.appendChild(document.createTextNode('Edit'))
+	ed.className="edit"
+	li.appendChild(ed)
+	ul.appendChild(li)
+}
 
