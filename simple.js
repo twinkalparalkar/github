@@ -13,11 +13,17 @@ function removeitem(e){
 	// console.log(e.target.parentElement.innerText)
 	if(e.target.classList.contains('delete')){
 		var t=e.target.parentElement.innerText
+		
 		const v=t.split(' - ')[1]
 		localStorage.removeItem(v)
 		console.log(t.split(' - '))
 		var l=e.target.parentElement;
+		console.log(t,l.id)
 		ul.removeChild(l)
+
+		axios.delete(`https://crudcrud.com/api/e7a689a9022e45bbb9407e0c1dc4e4d0/studentdata/${l.id}`)
+		.then(res=>console.log(res))
+		.catch(err=>console.error(err))
 	}
 	if(e.target.classList.contains('edit')){
 		console.log(112)
@@ -91,8 +97,9 @@ window.addEventListener("DOMContentLoaded",()=>{
 })
 
 function showall(o){
-	// console.log(o.name,o.email,o.phone)
+	// console.log(o.name,o.email,o.phone,o._id)
 	const li=document.createElement('li')
+	li.id=o._id
 	li.appendChild(document.createTextNode(`${o.name} - ${o.email} - ${o.phone} - `))
 	const d=document.createElement('button')
 	d.appendChild(document.createTextNode('Delete'))
