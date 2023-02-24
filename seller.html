@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>seller admin Page</title>
+</head>
+<body>
+		<form id="form1">
+		Selling Price:<input type="number" id="price">
+		Product Name:<input type="text" id="name">
+		Choose a Category:
+		<select id="cat">
+			<option>Electronic</option>
+			<option>Food</option>
+			<option>Skincare</option>
+		</select>
+		<input type="submit" value="Add Product">
+	</form>
+<div id="w1">
+	<h1>Product</h1>
+	<h3>Electronic Items:</h3>
+	<ul id="electronic"></ul>
+	<h3>Food Items:</h3>
+	<ul id="food"></ul>
+	<h3>Skincare Items:</h3>
+	<ul id="skincare"></ul>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.6/axios.min.js"></script>
+
+<script src="seller23.js"></script>
+</body>
+</html>
