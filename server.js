@@ -21,21 +21,18 @@ const http=require('http')
 const bo=require('body-parser')
 const express=require('express')
 const app=express()
-app.use(bo.urlencoded({extended:false}))
-app.use('/add-product',(req,res,next)=>{
-    console.log("In the middle ware")
-    // res.send("<h1>Add Product</h1>")
-    res.send("<form action='/product' method='POST' ><input type='text' name='tit'><button type='submit'>ADD Product</button></form>")
-})
+const admin=require('./routes/admin')
+const shop=require('./routes/shop')
 
-app.use('/product',(req,res)=>{
-    console.log(req.body)
-    res.redirect('/')
+
+app.use(bo.urlencoded({extended:false}))
+app.use('/admin',admin)
+app.use(shop)
+
+
+app.use((req,res,next)=>{
+    res.status(404).send("<h1>Page not found</h1>")
 })
-app.use('/',(req,res,next)=>{
-    console.log("In the middle ware")
-    res.send("<h1>hello world twinkal</h1>")
-})
-const server=http.createServer(app)
+// const server=http.createServer(app)
 //http://localhost:4000/node
-server.listen(4000)
+app.listen(4000)
