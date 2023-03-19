@@ -1,19 +1,18 @@
-// const http=require('http')
-// const bo=require('body-parser')
-const express=require('express')
-const router=express.Router()
-router.get('/add-product',(req,res,next)=>{
-    console.log("In the middle ware")
-    // res.send("<h1>Add Product</h1>")
-    res.send("<form action='/product' method='POST' ><input type='text' name='tit'><button type='submit'>ADD Product</button></form>")
-})
+const path = require('path');
 
-router.post('/product',(req,res)=>{
-    console.log(req.body)
-    res.redirect('/')
-})
+const express = require('express');
 
-module.exports=router
-// const server=http.createServer(app)
-//http://localhost:4000/node
-// server.listen(4000)
+const adminController = require('../controllers/admin');
+
+const router = express.Router();
+
+// /admin/add-product => GET
+router.get('/add-product', adminController.getAddProduct);
+
+// /admin/products => GET
+router.get('/products', adminController.getProducts);
+
+// /admin/add-product => POST
+router.post('/add-product', adminController.postAddProduct);
+
+module.exports = router;
