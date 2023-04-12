@@ -1,18 +1,20 @@
 const ex=require('express')
 const bodyparse=require('body-parser')
-const path=require('path')
-const cor=require('cors')
-const rootdr=require('./util/path')
-// const User=require('./models/product')
-const userRoute=require('./routes/seller')
-
+const cors=require('cors')
+const user=require('./model/user')
 const app=ex()
-app.use(cor())
+app.use(cors())
 app.use(bodyparse.json({extended:false}))
-// app.set('view engine', 'ejs');
-// app.set('views', 'views');
-app.use('/',userRoute)
-// app.use(ex.static(path.join(rootdr,'public')))
-// sequelize.sync().then(res=>app.listen(4000)).catch((err)=>console.log(err))
+
+app.post('/user/signup',(req,res,next)=>{
+    const a=req.body.name
+    const b=req.body.email
+    const c=req.body.password
+    console.log(req.body)
+    const data=user.create({name:a,email:b,password:c})
+    res.status(201).json({n:data})
+    console.log(res.data,res.n)
+    
+})
+
 app.listen(3000)
-// http://localhost:4000/user/add  post
